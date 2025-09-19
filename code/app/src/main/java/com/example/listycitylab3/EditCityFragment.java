@@ -61,12 +61,14 @@ public class EditCityFragment extends DialogFragment {
                 .create();
     }
 
-    public static EditCityFragment newInstance(City cityData, int index) {
-        EditCityFragment dialog = new EditCityFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("cityObj", cityData);
-        bundle.putInt("cityIndex", index);
-        dialog.setArguments(bundle);
-        return dialog;
+    public static EditCityFragment newInstance(City city, int position) {
+        Bundle args = new Bundle();
+        args.putString("cityName", city.getName());
+        args.putString("provinceName", city.getProvince());
+        args.putInt("position", position);
+
+        EditCityFragment fragment = new EditCityFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 }
