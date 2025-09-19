@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements
         fab.setOnClickListener(v -> {
             new AddCityFragment().show(getSupportFragmentManager(), "Add City");
         });
-        cityList.setOnItemClickListener((parent, view, position, id) -> {
-            City city = dataList.get(position);
-            EditCityFragment editFragment = EditCityFragment.newInstance(city, position);
-            editFragment.show(getSupportFragmentManager(), "Edit City");
+        cityList.setOnItemClickListener((adapterView, itemView, index, rowId) -> {
+            City selectedCity = dataList.get(index);   // grab the clicked city
+            EditCityFragment dialog = EditCityFragment.newInstance(selectedCity, index);
+            dialog.show(getSupportFragmentManager(), "Edit City");
         });
     }
 }
